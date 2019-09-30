@@ -1,0 +1,33 @@
+#logo{
+    display: inline-block;
+    width: 5%;
+}
+
+.tab
+{
+    display:inline-block;
+    cursor:pointer;
+    text-align: center;
+    horiz-align: center;
+    padding-inline: 20px;
+
+}
+.tab_0
+{
+    display:inline-block;
+
+}
+.tab_1
+{
+    display:inline-block;
+}
+.content_tab
+{
+    box-sizing: border-box;
+    border:1px solid black;
+    margin-top:-1px;
+    padding:5px;
+    display:none;
+    width: 100%;
+
+}
