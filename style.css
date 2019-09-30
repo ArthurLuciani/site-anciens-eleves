@@ -8,7 +8,6 @@
     display:inline-block;
     cursor:pointer;
     text-align: center;
-    horiz-align: center;
     padding-inline: 20px;
 
 }
@@ -30,4 +29,8 @@
     display:none;
     width: 100%;
 
+}
+.header
+{
+    width: 100%;
 }
