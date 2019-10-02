@@ -11,6 +11,10 @@
 </head>
 <body>
 
+<?php
+include 'header.php'
+?>
+
 <div class="content_tabs">
     <div class="content_tab" id="content_tab_home" style="display: block">
         <img src="images/ENS-Rennes-105_carroussel.jpg">
@@ -24,44 +28,44 @@
         <div>
             coucou
         </div>
+        <?php
+
+        ?>
     </div>
     <div class="content_tab" id="content_tab_connexion">
-    <div class="content_tab2" id="content_tab2_Session">
-        <div id ="formulaire">
-            <span style = "text-align:center" >
-                <form method="post" action= "connexion.php" id = "sign_in" style="display:inline-block">
-                    <div class ="form">
-                        <h3> Pseudo :</h3>
-                        <input type="text" name="pseudo" id="pseudo" placeholder="Ex : Zozor" size="20" maxlength="10" required /> <br />
-                    </div>  
-                    <div class ="form">
-                        <h3> Password :</h3>
-                        <input type="password" name="pass" id="pass" required  />
-                    </div> 
-                    <p class = form>
-                        <input type="submit" value="Connexion" id = "button_co" />
-                    </p>
-                </form>	
-            </span> 
-            <span style = "text-align:center" >
-                <form method="post" action= "../php/subscribe.php" style="display:inline-block">
-                    <div class ="form">
-                        <h3> Pseudo :</h3>
-                        <input type="text" name="pseudo" id="pseudo" placeholder="Ex : Zozor" size="20" maxlength="10" required /> <br />
-                    </div>  
-                    <div class ="form">
-                        <h3> Password :</h3>
-                        <input type="password" name="pass" id="pass" required title='6 cractères au minimum' />
-                    </div> 
-                    <p class = form>
-                        <input type="submit" value="Inscription" id = "button_co" />
-                    </p>
-                    
-                </form>	
-            </span>  
+        <div class="content_tab2" id="content_tab2_Session">
+            <div id ="formulaire">
+                <span style = "text-align:center" >
+                    <form method="post" action= "connexion.php" id = "sign_in" style="display:inline-block">
+                        <div class ="form">
+                            <h3> Pseudo :</h3>
+                            <input type="text" name="pseudo" id="pseudo" placeholder="Ex : Zozor" size="20" maxlength="10" required > <br>
+
+                            <h3> Password :</h3>
+                            <input type="password" name="pass" id="pass" required >
+                        </div>
+                        <p class = form>
+                            <input type="submit" value="Connexion" id = "button_co">
+                        </p>
+                    </form>
+                </span>
+                <span style = "text-align:center" >
+                    <form method="post" action= "subscribe.php" style="display:inline-block">
+                        <div class ="form">
+                            <h3> Pseudo :</h3>
+                            <input type="text" name="pseudo" id="pseudo" placeholder="Ex : Zozor" size="20" maxlength="10" required> <br>
+                            <h3> Password :</h3>
+                            <input type="password" name="pass" id="pass" required title='6 cractères au minimum'>
+                        </div>
+                        <p class = form>
+                            <input type="submit" value="Inscription" id = "button_co">
+                        </p>
+
+                    </form>
+                </span>
+            </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>
