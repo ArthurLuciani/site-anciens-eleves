@@ -55,7 +55,7 @@
                     <input type="submit" value="Connexion" id = "button_co" />
                 </div>
             </form>	
-            <form class="wrap_form" method="post" action= "subscribe.php" style="display:inline-block">
+            <form class="wrap_form" method="post" action= "inscription.php" style="display:inline-block">
                 <div class ="form">
                     <h3>   Pseudo :
                         <input type="text" name="pseudo" id="pseudo" placeholder="Ex : Zozor" size="40" maxlength="10" required /> <br />
