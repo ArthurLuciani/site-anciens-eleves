@@ -11,7 +11,7 @@
 </head>
 <body>
 <?php
-    include("header.php")
+    include("header.php");
 ?>
 
 <div class="content_tabs">
@@ -30,59 +30,20 @@
         </p>
     </div>
     <div class="content_tab" id="content_tab_students">
-        <div>
-            coucou
-        </div>
+        <?php
+            include("students.php");
+        ?>
     </div>
     <div class = "content_tab" id="content_tab_contact">
-        Dans cette partie se trouvera un formulaire de contact pour laisser des commentaires visible par le propiétaire du site.
+        <?php
+            include("contact.php");
+        ?>
     </div>
     <div class="content_tab" id="content_tab_connexion">
-        <div id ="formulaires">
-            <form class="wrap_form" method="post" action= "connexion.php" id = "sign_in" style="display:inline-block">
-                <div class ="form">
-                    <h3>   Pseudo :  
-                        <input type="text" name="pseudo" id="pseudo" placeholder="Ex : Zozor" size="40" maxlength="10" required /> <br />
-                    </h3>
-                    
-                </div>  
-                <div class ="form">
-                    <h3> Password :
-                        <input type="password" name="pass" id="pass" required size="40" />
-                    </h3>
-                </div> 
-                <div class = form>
-                    <input type="submit" value="Connexion" id = "button_co" />
-                </div>
-            </form>	
-            <form class="wrap_form" method="post" action= "subscribe.php" style="display:inline-block">
-                <div class ="form">
-                    <h3>   Pseudo :
-                        <input type="text" name="pseudo" id="pseudo" placeholder="Ex : Zozor" size="40" maxlength="10" required /> <br />
-                    </h3>
-                </div>  
-                <div class ="form">
-                    <h3> Password :
-                        <input type="password" name="pass" id="pass" size="40" required title='6 cractères au minimum' />
-                    </h3>
-                </div> 
-                <div class ="form">
-                    <h3>    E-mail :
-                        <input type="mail" name="mail" id="mail" placeholder="prenom.nom@ens-rennes.fr" size="40" maxlength="50" required /> <br />
-                    </h3>
-                </div>  
-                <div class ="form">
-                    <h3>     Promo :
-                        <input type="number" name="promo" id="promo" placeholder="2016" size="40" maxlength="10" min="1980" defalut="1990" required /> <br />
-                    </h3>
-                </div>  
-                <div class = form>
-                    <input type="submit" value="Inscription" id = "button_co" />
-                </div>
-            </form>	
-        </div>
+        <?php
+            include("formulaire.php");
+        ?> 
     </div>
-    
 </div>
 
 </body>
