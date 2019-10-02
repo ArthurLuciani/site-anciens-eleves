@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8" />
     <title>Parcours des anciens</title>
-    <link rel="icon" href="images/logo.png">
+   <link rel="icon" href="images/logo.png">
     <meta name="generator" content="Geany 1.32" />
     <link rel="stylesheet" href="style.css">
     <script src="functions.js"></script>
-</head>
+
 <body>
 <?php
-    include("header.php")
+    include("header.php");
 ?>
 
 <div class="content_tabs">
@@ -30,14 +30,21 @@
         </p>
     </div>
     <div class="content_tab" id="content_tab_students">
-        <div>
-            coucou
-        </div>
+        <?php
+            include("students.php");
+        ?>
     </div>
     <div class = "content_tab" id="content_tab_contact">
-        Dans cette partie se trouvera un formulaire de contact pour laisser des commentaires visible par le propiétaire du site.
+        <?php
+            include("contact.php");
+        ?>
     </div>
     <div class="content_tab" id="content_tab_connexion">
+
+        <?php
+            include("formulaire.php");
+        ?> 
+
         <div id ="formulaires">
             <form class="wrap_form" method="post" action= "connexion.php" id = "sign_in" style="display:inline-block">
                 <div class ="form">
@@ -81,8 +88,8 @@
                 </div>
             </form>	
         </div>
+
     </div>
-    
 </div>
 
 </body>
