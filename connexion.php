@@ -13,25 +13,28 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = test_input($_POST["pseudo"]);
+    $email = test_input($_POST["mail"]);
     $pass = test_input($_POST["password"]);
 
-    $sql = "SELECT id, hash FROM Identifiants WHERE pseudo=? ;";
+    $sql = "SELECT id, hash, nom, prenom FROM Identifiants WHERE email=? ;";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $name);
+    $stmt->bind_param("s", $email);
     $stmt->execute();
+    $errID = "";
     if ($stmt->num_rows==1) {
-        $stmt->bind_result($id, $hash);
+        $stmt->bind_result($id, $hash, $name, $surname);
         $stmt->fetch();
         if (password_verify($pass, $hash)) {
+            session_unset();
+            session_destroy();
             session_start();
             $_SESSION["user_id"] = $id;
-            $_SESSION["user_name"] = $name;
+            $_SESSION["user_name"] = $surname." ".$name;
         } else {
-            $errID = "Pseudo ou mot de passe invalide";
+            $errID = "Mail ou mot de passe invalide";
         }
     } else {
-        $errID = "Pseudo ou mot de passe invalide";
+        $errID = "Mail ou mot de passe invalide";
     }
     $stmt->close();
     include("index.php");

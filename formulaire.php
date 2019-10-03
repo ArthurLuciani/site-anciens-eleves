@@ -45,5 +45,5 @@
         <div class = form>
             <input type="submit" value="Inscription" id = "button_co" />
         </div>
-    </form>	
+    </form>
 </div>
