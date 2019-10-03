@@ -1,3 +1,9 @@
+<?php
+if (isset($_GET['err'])){
+    $errID = htmlspecialchars(trim($_GET['err']));
+    echo "<div class='warning'> $errID </div>";
+}
+?>
 
 <div id ="formulaires">
     <form class="wrap_form" method="post" action= "connexion.php" id = "sign_in" style="display:inline-block">
@@ -16,7 +22,7 @@
             <input type="submit" value="Connexion" id = "button_co" />
         </div>
     </form>	
-    <form class="wrap_form" method="post" action= "subscribe.php" style="display:inline-block">
+    <form class="wrap_form" method="post" action= "inscription.php" style="display:inline-block">
         <div class ="form">
             <h3> Nom :
                 <input type="text" name="nom" id="nom" placeholder="Ex : Legrand" size="46" maxlength="10" required /> <br />

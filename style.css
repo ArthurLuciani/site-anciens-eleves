@@ -71,3 +71,8 @@ body{
 .form{
     margin: 20px;
 }
+
+.warning{
+    color: red;
+    text-align: center;
+}

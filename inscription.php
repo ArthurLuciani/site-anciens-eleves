@@ -47,7 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
     }
     //echo "success $name $id $email";
-    include("index.php");
+    if (isset($errID)){
+        header("Location: index.php?tab=connexion&err='$errID'");
+    } else {
+        header("Location: index.php?tab=students");
+    }
 }
 //echo "</body>";
 function test_input($data) {

@@ -12,8 +12,6 @@
 <body>
 <?php
     session_start();
-    $_SESSION['name'] = 'LUCIANI Arthur';
-    $_SESSION['onglet'] = 'students';
     include("header.php");
 ?>
 

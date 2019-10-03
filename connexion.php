@@ -14,35 +14,46 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = test_input($_POST["mail"]);
-    $pass = test_input($_POST["password"]);
+    $pass = test_input_pass($_POST["password"]);
 
     $sql = "SELECT id, hash, nom, prenom FROM Identifiants WHERE email=? ;";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $errID = "";
-    if ($stmt->num_rows==1) {
-        $stmt->bind_result($id, $hash, $name, $surname);
-        $stmt->fetch();
+    $stmt->bind_result($id, $hash, $name, $surname);
+    $stmt->fetch();
+    session_unset();
+    session_destroy();
+    if (isset($id)){
         if (password_verify($pass, $hash)) {
-            session_unset();
-            session_destroy();
             session_start();
             $_SESSION["user_id"] = $id;
             $_SESSION["user_name"] = $surname." ".$name;
         } else {
-            $errID = "Mail ou mot de passe invalide";
+            $errID = "Mot de passe invalide";
         }
     } else {
-        $errID = "Mail ou mot de passe invalide";
+        $errID = "Mail non-enregistré $email";
     }
     $stmt->close();
-    include("index.php");
+    if (isset($errID)){
+        header("Location: index.php?tab=connexion&err='$errID'");
+    } else {
+        header("Location: index.php?tab=students&id=".$_SESSION["user_id"]);
+    }
+
 }
 
-function test_input($data) {
+function test_input_pass($data) {
     $data = trim($data);
     //$data = stripslashes($data);
+    //$data = strip_tags($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
     $data = strip_tags($data);
     $data = htmlspecialchars($data);
     return $data;
