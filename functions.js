@@ -11,6 +11,8 @@ function change_tab(name) {
 
 
 }
-data ={
-    old_tab : "home"
+if (typeof(data) == 'undefined') {
+    data ={
+        old_tab : "home"
+    }
 }

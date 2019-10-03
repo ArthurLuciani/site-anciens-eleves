@@ -13,6 +13,7 @@
 <?php
     session_start();
     $_SESSION['name'] = 'LUCIANI Arthur';
+    $_SESSION['onglet'] = 'students';
     include("header.php");
 ?>
 
@@ -48,6 +49,18 @@
         ?> 
     </div>
 </div>
+<?php
+    if(isset($_GET['tab'])){
+        $tab = htmlspecialchars($_GET['tab']);
+        if (in_array($tab,['students', 'contact','home','connexion'])) {
+          ?>
+            <script>
+                change_tab(<?php echo "'".$tab."'"; ?>);
+            </script>
+        <?php  
+        } 
+    }
+?>
 
 </body>
 </html>
