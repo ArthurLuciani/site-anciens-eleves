@@ -8,7 +8,7 @@
             
         </div>  
         <div class ="form">
-            <h3> Password :
+            <h3> Mot de passe :
                 <input type="password" name="pass" id="pass" required size="40" />
             </h3>
         </div> 
