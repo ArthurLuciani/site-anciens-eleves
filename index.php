@@ -48,13 +48,13 @@
         <div id ="formulaires">
             <form class="wrap_form" method="post" action= "connexion.php" id = "sign_in" style="display:inline-block">
                 <div class ="form">
-                    <h3>   Pseudo :  
-                        <input type="text" name="pseudo" id="pseudo" placeholder="Ex : Zozor" size="40" maxlength="10" required /> <br />
+                    <h3>   E-mail :  
+                        <input type="text" name="mail" id="mail" placeholder="Ex : Zozor" size="40" maxlength="10" required /> <br />
                     </h3>
                     
                 </div>  
                 <div class ="form">
-                    <h3> Password :
+                    <h3> Mot de passe :
                         <input type="password" name="pass" id="pass" required size="40" />
                     </h3>
                 </div> 
@@ -64,12 +64,17 @@
             </form>	
             <form class="wrap_form" method="post" action= "inscription.php" style="display:inline-block">
                 <div class ="form">
-                    <h3>   Pseudo :
-                        <input type="text" name="pseudo" id="pseudo" placeholder="Ex : Zozor" size="40" maxlength="10" required /> <br />
+                    <h3>   Nom :
+                        <input type="text" name="nom" id="nom" placeholder="Legrand" size="40" maxlength="10" required /> <br />
                     </h3>
                 </div>  
                 <div class ="form">
-                    <h3> Password :
+                    <h3>   Prenom :
+                        <input type="text" name="prenom" id="prenom" placeholder="Ex : Zozor" size="40" maxlength="10" required /> <br />
+                    </h3>
+                </div>  
+                <div class ="form">
+                    <h3> Mot de passe :
                         <input type="password" name="pass" id="pass" size="40" required title='6 cractères au minimum' />
                     </h3>
                 </div> 
