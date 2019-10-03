@@ -11,6 +11,8 @@
 
 <body>
 <?php
+    session_start();
+    $_SESSION['name'] = 'LUCIANI Arthur';
     include("header.php");
 ?>
 

@@ -3,12 +3,6 @@ body{
     background-color: ghostwhite;
 }
 
-
-
-#logo{
-    display: inline-block;
-    height: 100%;
-}
 #header
 {
     display: flex;
@@ -19,13 +13,21 @@ body{
     align-items: center;
     background-color:#574c52;
 }
+#logo{
+    display: inline-block;
+    height: 100%;
+}
+#deconnexion{
+    font-size:20px;
+    color:blue;
+}
 
 .tab
 {
     display:inline-block;
     cursor:pointer;
     text-align: center;
-    width: 200px;
+    width: 300px;
     font-size: 30px;
     margin-right:100px; 
     margin-left: 10px;

@@ -9,7 +9,7 @@
         </div>  
         <div class ="form">
             <h3> Mot de passe :
-                <input type="password" name="pass" id="pass" required size="40" />
+                <input type="password" name="pass" id="pass" required size="36" />
             </h3>
         </div> 
         <div class = form>
@@ -29,7 +29,7 @@
         </div> 
         <div class ="form">
             <h3> Mot de passe :
-                <input type="password" name="pass" id="pass" size="40" required title='6 cractères au minimum' />
+                <input type="password" name="pass" id="pass" size="36" required title='6 cractères au minimum' />
             </h3>
         </div> 
         <div class ="form">
