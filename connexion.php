@@ -39,7 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($errID)){
         header("Location: index.php?tab=connexion&err='$errID'");
     } else {
-        header("Location: index.php?tab=students&id=".$_SESSION["user_id"]);
+        //header("Location: index.php?tab=students&id=".$_SESSION["user_id"]);
+        header("Location: index.php?tab=students");
     }
 
 }
