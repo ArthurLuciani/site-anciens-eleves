@@ -38,8 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssssi", $name, $surname, $hash, $email, $promo);
         if ($stmt->execute()==TRUE){
             $id = $stmt->insert_id;
-            session_unset();
-            session_destroy();
             session_start();
             $_SESSION["user_id"] = $id;
             $_SESSION["user_name"] = $surname." ".$name;

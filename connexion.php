@@ -22,8 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $stmt->bind_result($id, $hash, $name, $surname);
     $stmt->fetch();
-    session_unset();
-    session_destroy();
     if (isset($id)){
         if (password_verify($pass, $hash)) {
             session_start();
