@@ -6,15 +6,17 @@
         --><?php 
         if (isset($_SESSION["user_name"])){
             ?>
-            <span class='tab_0 tab'>
+            <span class='tab_0 tab' id='menu'>
             <?php
                 echo htmlspecialchars($_SESSION['user_name']);
             ?>
-            <br>
-            <a href = 'deconnexion.php' id = "deconnexion"> Deconnexion </a>
-            </span><!--
-        --></div>
-        <?php
+            <ul class ="sous">
+            <li> <a > Test1</a>  </li> 
+            <li> <a > Test2</a>  </li> 
+            <li> <a > Test3</a>  </li> 
+            <li> <a href="deconnexion.php" id = "deconnexion"> Deconnexion</a>  </li> 
+            </ul>
+           <?php 
         } else {
             ?>
             <span class='tab_0 tab' id='tab_connexion' onclick="change_tab('connexion');"> Connexion </span><!--
@@ -23,3 +25,11 @@
         }
         ?>
 </div>
+
+<!--
+    <br>
+            <a href = 'deconnexion.php' id = "deconnexion"> Deconnexion </a>
+            </span>
+        </div>
+        
+    -->

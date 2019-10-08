@@ -13,11 +13,12 @@
 <?php
     session_start();
     include("header.php");
+    $_SESSION["user_name"] = "LUCIANI Arthur";
 ?>
 
 <div class="content_tabs">
-    <div class="content_tab" id="content_tab_home" style="display: block">
-        <img src="images/ENS-Rennes-105_carroussel.jpg" style = "width:100%">
+    <div class="content_tab" id="content_tab_home" style="display:block;" >
+        <img src="images/ENS-Rennes-105_carroussel.jpg" id="carroussel" >
         <h2>Bienvenue sur le site des anciens élèves de l'ENS Rennes.</h2>
         <p>
             Ce site a pour but de rassembler au même endroit l'ensemble des parcours réalisés
@@ -58,6 +59,9 @@
         <?php  
         } 
     }
+
+include("footer.php")
+
 ?>
 
 </body>

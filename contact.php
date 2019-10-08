@@ -3,7 +3,7 @@
         <fieldset>
             <p>
                 <label for="ameliorer"> Avez vous des remarques, des questions à nous faire parvenir ?</label><br />
-                <textarea name="ameliorer" id="ameliorer" maxlength="120" required ></textarea>
+                <textarea name="ameliorer" id="ameliorer" maxlength="300" rows="6" cols="50" required ></textarea>
             </p>
             <input type="submit" value="Envoyer" />
         </fieldset>
