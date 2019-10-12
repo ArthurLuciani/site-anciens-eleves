@@ -13,7 +13,6 @@
 <?php
     session_start();
     include("header.php");
-    $_SESSION["user_name"] = "LUCIANI Arthur";
 ?>
 
 <div class="content_tabs">
