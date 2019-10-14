@@ -1,5 +1,5 @@
 <?php
-
+function connexionbdd
 $servername = "localhost";
 $username = "ancien";
 $password = "ttQcxSS6AqTmVhNQ";
