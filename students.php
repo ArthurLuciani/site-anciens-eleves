@@ -17,7 +17,7 @@
             <?php
             $Departements = array('Droit Economie et Gestion', 'Informatique', 'Mécatronique','Mathématique', 'Sciences du Sport et Education Phyique');
             foreach ($Departements as $Departement ) {
-                echo "<input type='checkbox' name= 'Department' id=$Departement /> <label for = $Departement> $Departement</label><br />";
+                echo "<input type='checkbox' name= 'Departement' id=$Departement /> <label for = $Departement> $Departement</label><br />";
             }
             ?>
         </p>
@@ -37,14 +37,16 @@
     </tr>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $data = selectData(); // il faut mettre en paramètre le post année et département
+        $years = $_POST['annees'];
+        $dept = $_POST['Departement'];
+        $data = selectData($years,$dept); // il faut mettre en paramètre le post année et département
         $nb = count($data);
-        for($i=0, i<$nb,i++){
-            echo "<tr>"
-            foreach ($data[i] as $eleve ) {
-                echo "<th> $champ </th>";
+        for($i=0; $i<$nb;$i++){
+            echo "<tr>";
+            foreach ($data[$i] as $eleve ) {
+                echo "<td> $eleve </td>";
             }
-
+            echo "</tr>";
         }
 
 
@@ -70,5 +72,10 @@ function selectChamps(){
     return array('années','département','nom','prenom','Cursus');
 }
 
+function selectData(){
+
+    return array([2015,'Mecatronique','Vincent','Nicolas',''],[2016,'Informatique','Palaude','Axel','Agreg Science ingénieur']);
+
+    }
 
 ?>
