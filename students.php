@@ -1,10 +1,13 @@
 
 <?php
+
+require "MySQL.php";
+
     if (isset($_POST['id_sup'])){
         deleteCursusByIDh($_POST['id_sup']);
     }
     if (isset($_POST['year'])){
-        addCursusForID($_SESSION['user_id']),$_POST['year']),$_POST['cursus']))
+        addCursusForID($_SESSION['user_id'],$_POST['year'],$_POST['cursus']);
     }
 
     
@@ -113,8 +116,3 @@
 </span>
 </div>
 
-<?php
-require "MySQL.php"
-
-
-?>
