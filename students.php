@@ -1,8 +1,13 @@
 
 <?php
     if (isset($_POST['id_sup'])){
-        SuprParcours($_POST['id_sup']);
+        deleteCursusByIDh($_POST['id_sup']);
     }
+    if (isset($_POST['year'])){
+        addCursusForID($_SESSION['user_id']),$_POST['year']),$_POST['cursus']))
+    }
+
+    
 ?>
 
 
@@ -66,7 +71,7 @@
     </table>
     <?php
     if (isset($_SESSION["user_id"])){
-        $cursus =selectCursusByID($_SESSION["user_id"]);
+        $cursus =getCursusByID($_SESSION["user_id"]);
         if($cursus != null) {
             echo "<table>";
             foreach ($cursus as $key => $parcours ) {
@@ -91,7 +96,7 @@
     <div class='ajout_cursus'>
         <form method="post" action="index.php">
             <span> Année de début :
-                <input type="number" name="promo" id="promo" placeholder="2016" maxlength="10" min="1950" required />
+                <input type="number" name="year" id="year" placeholder="2016" maxlength="10" min="1950" required />
             </span>
             <span>
                 cursus :
