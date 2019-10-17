@@ -39,12 +39,17 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $years = $_POST['annees'];
         $dept = $_POST['Departement'];
-        $data = selectData($years,$dept); // il faut mettre en paramètre le post année et département
+        $data = selectData($years,$dept); 
         $nb = count($data);
-        for($i=0; $i<$nb;$i++){
+        foreach ($data as $key => $values){
             echo "<tr>";
-            foreach ($data[$i] as $eleve ) {
-                echo "<td> $eleve </td>";
+            $identifiants = explode(',',$key);
+            foreach ($identifiants as $id ) {
+                echo "<td> $id </td>";
+            }
+            echo "<td>";
+            foreach ($values as $annee => $parcours ) {
+                echo "$annee : $parcours </br>";
             }
             echo "</tr>";
         }
@@ -52,6 +57,7 @@
 
     }
     
+    // forme des data : ['Département Nom prenom' => [Année => parcours, Année => parcours],'Département Nom prenom' => [Année => parcours, Année => parcours]]
 
     ?>
     
@@ -69,12 +75,13 @@ function selectAnnees(){
 }
 function selectChamps(){
     // select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where table_name='Parcours'; 
-    return array('années','département','nom','prenom','Cursus');
+    return ['Département', 'Nom', 'Prenom', 'Année d\'entrée','Parcours'];
 }
 
 function selectData(){
 
-    return array([2015,'Mecatronique','Vincent','Nicolas',''],[2016,'Informatique','Palaude','Axel','Agreg Science ingénieur']);
+    return array('Sciences du Sport et Education Phyique, D\'arc, Jeanne, 2014' => ['2017'=> 'n\'élève pas des moutons', '2018'=> 'repousse les anglais'],
+    'Mécatronique, CURIE, Marie, 2012' => ['2015'=> 'rejoint les troupes des féministes', '2020'=> 'prouve que le nuage s\'est arrété à la frontière']);
 
     }
 
