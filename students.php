@@ -135,4 +135,20 @@ function getCursusByID($id) {
     return  $return_array;
 }
 
+function addCursusForID($id, $an, $cursus) {
+    global $conn;
+    $sql = "INSERT INTO Cursus (id, year, histoire) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iis", $id, $an, $cursus);
+    return  $stmt->execute();
+}
+
+function deleteCursusByIDh($idh) {
+    global $conn;
+    $sql = "DELETE FROM Cursus WHERE id_h=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $idh);
+    return  $stmt->execute();
+}
+
 ?>
