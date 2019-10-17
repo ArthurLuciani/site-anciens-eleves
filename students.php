@@ -22,7 +22,11 @@ require "MySQL.php";
             <?php
             $annees = selectAnnees();
             foreach ($annees as $an ) {
-                echo "<input type='checkbox' value= $an name= 'annees_$an' id=$an /> <label for=$an>$an</label><br />";
+                if(isset($_POST['annees_'.$an])){
+                    echo "<input type='checkbox' value= $an name= 'annees_$an' id=$an checked/> <label for=$an>$an</label><br />";
+                } else {
+                    echo "<input type='checkbox' value= $an name= 'annees_$an' id=$an/> <label for=$an>$an</label><br />";
+                }
             }
             ?>
         </p>
@@ -41,11 +45,14 @@ require "MySQL.php";
     ?>
     </tr>
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
         $years = array();
         foreach ($_POST as $cle=>$value ) {
-            echo "<script> console.log('$cle'+ ' = '+$value) </script>";
-            $years = array_merge($years,array($_POST[$cle]));
+            if (in_array($value,$annees)) {
+                log_print($cle.' = '.$value);
+                array_push($years, $value);
+            }
+
         }
         //$test = print_r($years);
         //echo " <div> $test[0] </div>";
@@ -99,12 +106,13 @@ require "MySQL.php";
     <div class='ajout_cursus'>
         <form method="post" action="index.php?tab=students">
             <span> Année de début :
-                <input type="number" name="year" id="year" placeholder="2016" maxlength="10" min="1950" required />
+                <input type="number" name="year" id="year" default="2016" maxlength="10" min="1950" required />
             </span>
-            <span>
+            <br>
+            <div id="cursus">
                 cursus :
-                <input type="text" name="cursus" id="cursus" size="100" maxlength="200" required />
-            </span>
+                <input type="text" name="cursus" id="cursus" required />
+            </div>
                 <input type="submit" value="Envoyer" />
         </form>
     </div>
@@ -115,4 +123,6 @@ require "MySQL.php";
 
 </span>
 </div>
+
+
 

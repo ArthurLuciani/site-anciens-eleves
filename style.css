@@ -1,10 +1,16 @@
 body{
     background-image:url(images/fond.png);
     background-color: ghostwhite;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 200px;
+    box-sizing: border-box;
 }
 
 html {
     font-family: sans-serif;
+    height: 100%;
   }
   
 table {
@@ -33,11 +39,7 @@ td {
 .parcours {
     text-align: left;
 }
-.ajout_cursus{
-    display: flex;
-    text-align: top;
-    margin-top:20px ;
-}
+
 
 tr:nth-child(even) td {
 background-color: rgb(250,250,250);
@@ -118,6 +120,12 @@ padding: 10px;
 }
 .form{
     margin: 20px;
+    width: 100%;
+    display: block;
+}
+.ajout_cursus{
+    margin-top:20px ;
+
 }
 
 .warning{
@@ -126,9 +134,14 @@ padding: 10px;
 }
 #footer{
     display: flex;
+    width: 100%;
     background-color: #574c52;
-    color: rgba(255, 255, 255, 0.4);
-    min-height: 200px;
+    color: rgba(255, 255, 255, 0.5);
+    min-height: auto;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    position: fixed;
+    bottom: 0;
 }
 #message{
     width: 48.5%;
@@ -166,14 +179,15 @@ padding: 10px;
 #wrap_tableau{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     justify-content: center;
 }
 .nav{
-    width: 40%;
-    height: 400px;
+    width: 30%;
 }
 .tableau{
-    width: 60%;
-    height: 400px;
+    width: 70%;
+}
+
+#cursus{
+    width: 80%;
 }

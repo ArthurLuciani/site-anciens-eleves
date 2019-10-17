@@ -49,19 +49,18 @@ function selectData($years=null){
     // select annee from Parcours
     global $conn;
     if($years==null){
-        $sql = "SELECT nom, prenom, promo, year, histoire FROM `Identifiants` NATURAL JOIN `Cursus` 
-                ORDER BY id, year";
+        $sql = "SELECT nom, prenom, promo, year, histoire FROM `Identifiants` NATURAL JOIN `Cursus` ORDER BY id, year";
     } else {
-        $sql = "SELECT nom, prenom, promo, year, histoire FROM `Identifiants` NATURAL JOIN `Cursus` 
-                WHERE promo IN (";
-        foreach($years as $year){
-            $sql = $sql.$year.",";
-        }
-        rtrim($sql,',');
+        $sql = "SELECT nom, prenom, promo, year, histoire FROM `Identifiants` NATURAL JOIN `Cursus` WHERE promo IN (";
+        $sql = $sql.implode(",", $years);
         $sql = $sql.") ORDER BY id, year;";
     }
+    log_print('truc');
+    log_print($sql);
     $stmt = $conn->prepare($sql);
-    $stmt->execute();
+    if(!$stmt->execute()){
+        log_print("échec");
+    }
     $stmt->bind_result($nom, $prenom, $promo, $an, $cursus);
     $return_array = array();
     while($stmt->fetch()) {
@@ -105,4 +104,9 @@ function deleteCursusByIDh($idh) {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $idh);
     return  $stmt->execute();
+}
+
+
+function log_print($str){
+    echo "<script> console.log('$str') </script>";
 }

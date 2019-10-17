@@ -54,6 +54,7 @@
         if (in_array($tab,['students', 'contact','home','connexion'])) {
           ?>
             <script>
+                console.log('hello')
                 change_tab(<?php echo "'".$tab."'"; ?>);
             </script>
         <?php  

@@ -36,7 +36,9 @@ if ( isset($_POST['ameliorer']))
     $size_folder = sizeFolder("stockage");
     if (($size_file + $size_folder)<100000){
         $fichier = fopen("stockage/remarques.txt",'a+');
-        fputs($fichier, $_POST['ameliorer']. PHP_EOL);
+        $message = $_POST['ameliorer'];
+        log_print($message);
+        fputs($fichier, $message.PHP_EOL);
     } 
 }
     ?>
