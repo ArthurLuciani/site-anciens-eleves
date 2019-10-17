@@ -1,6 +1,7 @@
 <?php
-if (isset($_GET['err'])){
-    $errID = htmlspecialchars(trim($_GET['err']));
+session_start();
+if (isset($_SESSION['errID'])){
+    $errID = htmlspecialchars($_SESSION['errID']);
     echo "<div class='warning'> $errID </div>";
 }
 
