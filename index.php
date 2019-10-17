@@ -13,8 +13,6 @@
 <?php
     session_start();
     include("header.php");
-    $_SESSION['user_name']= 'Arthur Lucicani';
-    $_SESSION['user_id']= '0';
 
 ?>
 

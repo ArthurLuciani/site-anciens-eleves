@@ -47,8 +47,8 @@ require "MySQL.php";
             echo "<script> console.log('$cle'+ ' = '+$value) </script>";
             $years = array_merge($years,array($_POST[$cle]));
         }
-        $test = print_r($years);
-        echo " <div> $test[0] </div>";
+        //$test = print_r($years);
+        //echo " <div> $test[0] </div>";
 
     } else {
         $years = null;
@@ -97,7 +97,7 @@ require "MySQL.php";
         
     ?>
     <div class='ajout_cursus'>
-        <form method="post" action="index.php">
+        <form method="post" action="index.php?tab=students">
             <span> Année de début :
                 <input type="number" name="year" id="year" placeholder="2016" maxlength="10" min="1950" required />
             </span>
@@ -105,7 +105,7 @@ require "MySQL.php";
                 cursus :
                 <input type="text" name="cursus" id="cursus" size="100" maxlength="200" required />
             </span>
-                <input type="button" value="Envoyer" />
+                <input type="submit" value="Envoyer" />
         </form>
     </div>
     <?php

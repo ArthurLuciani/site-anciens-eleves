@@ -50,7 +50,7 @@ function selectData($years=null){
     global $conn;
     if($years==null){
         $sql = "SELECT nom, prenom, promo, year, histoire FROM `Identifiants` NATURAL JOIN `Cursus` 
-                ORDER BY id, nom, prenom, promo";
+                ORDER BY id, year";
     } else {
         $sql = "SELECT nom, prenom, promo, year, histoire FROM `Identifiants` NATURAL JOIN `Cursus` 
                 WHERE promo IN (";
@@ -58,14 +58,14 @@ function selectData($years=null){
             $sql = $sql.$year.",";
         }
         rtrim($sql,',');
-        $sql = $sql.");";
+        $sql = $sql.") ORDER BY id, year;";
     }
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $stmt->bind_result($nom, $prenom, $promo, $an, $cursus);
     $return_array = array();
     while($stmt->fetch()) {
-        $key = "$nom, $prenom, $promo";
+        $key = "$prenom, $nom, $promo";
         $return_array[$key][$an] = $cursus;
     }
     $stmt->close();
@@ -78,7 +78,7 @@ function selectData($years=null){
 
 function getCursusByID($id) {
     global $conn;
-    $sql = "SELECT id_h, year, histoire FROM `Cursus` WHERE id=?";
+    $sql = "SELECT id_h, year, histoire FROM `Cursus` WHERE id=? ORDER BY year";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $id);
     $stmt->execute();
