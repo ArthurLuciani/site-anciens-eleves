@@ -1,8 +1,12 @@
 
+<?php
+    if (isset($_POST['id_sup'])){
+        SuprParcours($_POST['id_sup']);
+    }
+?>
+
+
 <div id = 'wrap_tableau'>
-
-
-
 <span class='nav'>
     <form method="post" action="index.php?tab=students">
         <p>
@@ -10,14 +14,7 @@
             <?php
             $annees = selectAnnees();
             foreach ($annees as $an ) {
-                echo "<input type='checkbox' name= 'annees' id=$an /> <label for=$an>$an</label><br />";
-            }
-            ?>
-            <h3> Département  :<br /></h3>
-            <?php
-            $Departements = array('Droit Economie et Gestion', 'Informatique', 'Mécatronique','Mathématique', 'Sciences du Sport et Education Phyique');
-            foreach ($Departements as $Departement ) {
-                echo "<input type='checkbox' name= 'Departement' id=$Departement /> <label for = $Departement> $Departement</label><br />";
+                echo "<input type='checkbox' value= $an name= 'annees_$an' id=$an /> <label for=$an>$an</label><br />";
             }
             ?>
         </p>
@@ -29,7 +26,7 @@
     <table>
     <tr>
     <?php
-    $champs = selectChamps();
+    $champs = ['Prénom','Nom','Promo','Cursus'];
     foreach ($champs as $champ ) {
         echo "<th> $champ </th>";
     }
@@ -37,9 +34,19 @@
     </tr>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $years = $_POST['annees'];
-        $dept = $_POST['Departement'];
-        $data = selectData($years,$dept); 
+        $years = array();
+        foreach ($_POST as $cle=>$value ) {
+            echo "<script> console.log('$cle'+ ' = '+$value) </script>";
+            $years = array_merge($years,array($_POST[$cle]));
+        }
+        $test = print_r($years);
+        echo " <div> $test[0] </div>";
+
+    } else {
+        $years = null;
+        $dept = null;
+    }
+        $data = selectData($years); 
         $nb = count($data);
         foreach ($data as $key => $values){
             echo "<tr>";
@@ -47,7 +54,7 @@
             foreach ($identifiants as $id ) {
                 echo "<td> $id </td>";
             }
-            echo "<td>";
+            echo "<td class ='parcours'>";
             foreach ($values as $annee => $parcours ) {
                 echo "$annee : $parcours </br>";
             }
@@ -55,34 +62,54 @@
         }
 
 
-    }
-    
-    // forme des data : ['Département Nom prenom' => [Année => parcours, Année => parcours],'Département Nom prenom' => [Année => parcours, Année => parcours]]
-
-    ?>
-    
-    
+    //} ?>
     </table>
+    <?php
+    if (isset($_SESSION["user_id"])){
+        $cursus =selectCursusByID($_SESSION["user_id"]);
+        if($cursus != null) {
+            echo "<table>";
+            foreach ($cursus as $key => $parcours ) {
+                echo "<tr>";
+                echo "<td> $parcours </td>";
+                ?>
+                <td>
+                <form action="index.php?tab=students" method="post">
+                    <div>
+                        <input type="hidden" name="id_sup" value="<?php echo $key; ?>" />
+                        <input type="submit" value="Supprimer" />
+                    </div>
+                </form>
+                </td>
+                <?php
+                echo "</tr>";
+            }
+            echo "</table>";
+        }
+        
+    ?>
+    <div class='ajout_cursus'>
+        <form method="post" action="index.php">
+            <span> Année de début :
+                <input type="number" name="promo" id="promo" placeholder="2016" maxlength="10" min="1950" required />
+            </span>
+            <span>
+                cursus :
+                <input type="text" name="cursus" id="cursus" size="100" maxlength="200" required />
+            </span>
+                <input type="button" value="Envoyer" />
+        </form>
+    </div>
+    <?php
+    }
+            
+    ?>
 
 </span>
 </div>
 
-
 <?php
-function selectAnnees(){
-    // select annee from Parcours
-    return  array(2000,2001);
-}
-function selectChamps(){
-    // select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where table_name='Parcours'; 
-    return ['Département', 'Nom', 'Prenom', 'Année d\'entrée','Parcours'];
-}
+require "MySQL.php"
 
-function selectData(){
-
-    return array('Sciences du Sport et Education Phyique, D\'arc, Jeanne, 2014' => ['2017'=> 'n\'élève pas des moutons', '2018'=> 'repousse les anglais'],
-    'Mécatronique, CURIE, Marie, 2012' => ['2015'=> 'rejoint les troupes des féministes', '2020'=> 'prouve que le nuage s\'est arrété à la frontière']);
-
-    }
 
 ?>

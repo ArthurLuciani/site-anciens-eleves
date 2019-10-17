@@ -2,47 +2,54 @@ body{
     background-image:url(images/fond.png);
     background-color: ghostwhite;
 }
-a{
-    color: inherit;
-}
+
 html {
     font-family: sans-serif;
   }
   
-  table {
+table {
     box-sizing: border-box;
     border-collapse: collapse;
     border: 2px solid rgb(200,200,200);
     letter-spacing: 1px;
     font-size: 0.8rem;
     width: 100%;
-    margin-right: 50px
-  }
-  
-  td, th {
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
+
+td, th {
     border: 1px solid rgb(190,190,190);
     padding: 10px 20px;
-  }
-  
-  th {
+}
+
+th {
     background-color: rgb(235,235,235);
-  }
-  
-  td {
+}
+
+td {
     text-align: center;
-  }
-  
-  tr:nth-child(even) td {
-    background-color: rgb(250,250,250);
-  }
-  
-  tr:nth-child(odd) td {
-    background-color: rgb(245,245,245);
-  }
-  
-  caption {
-    padding: 10px;
-  }
+}
+.parcours {
+    text-align: left;
+}
+.ajout_cursus{
+    display: flex;
+    text-align: top;
+    margin-top:20px ;
+}
+
+tr:nth-child(even) td {
+background-color: rgb(250,250,250);
+}
+
+tr:nth-child(odd) td {
+background-color: rgb(245,245,245);
+}
+
+caption {
+padding: 10px;
+}
 #header
 {
     display: flex;
@@ -143,11 +150,13 @@ html {
     width: 100%;
     z-index:1000;
     color:white;
+    
 }
 
 .sous li{
     width: 100%;
     text-align: left;
+    padding-bottom:5px ;
 }
 
 .sous a:hover{
