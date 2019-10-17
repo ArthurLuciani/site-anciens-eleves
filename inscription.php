@@ -19,10 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_result($nb_row);
     $stmt->fetch();
     //echo $nb_row . "<br>";
-    if($nb_row >= 1){
+    if($nb_row >= 1) {
         $errID = "nom et prénom ou email déjà utilisé";
         $stmt->close();
         // pseudo deja utilise
+    } elseif (3>strlen($pass)) {
+        $errID = "Mot de passe trop court : au moins 3 caractères requis";
+        $stmt->close();
     } else {
         $stmt->close();
         $sql = "INSERT INTO Identifiants (nom, prenom, hash, email, promo) VALUES (?, ?, ?, ?, ?)";
