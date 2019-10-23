@@ -1,7 +1,7 @@
 <?php
 // permet d'afficher un message d'erreur lors d'un echec de connexion ou d'inscription
 //au dessus du formulaire
-session_start();
+
 if (isset($_SESSION['errID'])){
     $errID = htmlspecialchars($_SESSION['errID']);
     echo "<div class='warning'> $errID </div>";
