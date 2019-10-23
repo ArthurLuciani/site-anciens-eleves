@@ -1,6 +1,6 @@
 <?php
 
-require "MySQL.php";
+require "MySQL.php"; //connexion au serveur MySQL
 session_unset();
 session_destroy();
 session_start(); //on reset la session

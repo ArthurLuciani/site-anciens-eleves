@@ -1,4 +1,5 @@
 <?php
+//connexion à la base de donnée
 $servername = "localhost";
 $username = "ancien";
 $password = "ttQcxSS6AqTmVhNQ";
@@ -19,6 +20,7 @@ if ($conn->connect_error) {
     }
 }
 
+//---functions----------------------------------------------------------------------------------------------------------
 function test_input_pass($data) {
     $data = trim($data);
     //$data = stripslashes($data);
@@ -35,7 +37,7 @@ function test_input($data) {
 }
 
 function selectAnnees(){
-    // select annee from Parcours
+    // on récupère les différentes promos enregistrée dans un ordre croissant
     global $conn;
     $sql = "SELECT `promo` FROM `Identifiants` GROUP BY `promo` ORDER BY `promo`;";
     $stmt = $conn->prepare($sql);
@@ -48,30 +50,25 @@ function selectAnnees(){
     $stmt->close();
     return  $return_array;
 }
-function selectChamps(){
-    // select COLUMN_NAME from INFORMATION_SCHEMA.COLUMNS where table_name='Parcours';
-    return ['Département', 'Nom', 'Prenom', 'Année d\'entrée','Parcours'];
-}
+
 
 function selectData($years=null){
-    // select annee from Parcours
     global $conn;
-    if($years==null){
+    if($years==null){// aucune année == toutes les années
         $sql = "SELECT nom, prenom, promo, year, histoire FROM `Identifiants` NATURAL JOIN `Cursus` ORDER BY id, year";
-    } else {
+    } else {// on sélectionnes les années dans l'array years
         $sql = "SELECT nom, prenom, promo, year, histoire FROM `Identifiants` NATURAL JOIN `Cursus` WHERE promo IN (";
         $sql = $sql.implode(",", $years);
         $sql = $sql.") ORDER BY id, year;";
     }
-    log_print('truc');
-    log_print($sql);
+    //log_print($sql);
     $stmt = $conn->prepare($sql);
     if(!$stmt->execute()){
         log_print("échec");
     }
     $stmt->bind_result($nom, $prenom, $promo, $an, $cursus);
     $return_array = array();
-    while($stmt->fetch()) {
+    while($stmt->fetch()) {// on récupère le résultat de la requête et on le met en forme dans un array
         $key = "$prenom, $nom, $promo";
         $return_array[$key][$an] = $cursus;
     }
@@ -84,7 +81,10 @@ function selectData($years=null){
 }
 
 function getCursusByID($id) {
+    // récupère le cursus d'un utilisateur par son id
     global $conn;
+    // id == id utilisateur, year == année du cursus, histoire == cursus
+    // id_h == id du cursus
     $sql = "SELECT id_h, year, histoire FROM `Cursus` WHERE id=? ORDER BY year";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $id);
@@ -99,7 +99,9 @@ function getCursusByID($id) {
 }
 
 function addCursusForID($id, $an, $cursus) {
+    // ajout d'un nouveau cursus pour l'utilisateur d'identifiant id
     global $conn;
+    // id == id utilisateur, year == année du cursus, histoire == cursus
     $sql = "INSERT INTO Cursus (id, year, histoire) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("iis", $id, $an, $cursus);
@@ -107,6 +109,7 @@ function addCursusForID($id, $an, $cursus) {
 }
 
 function deleteCursusByIDh($idh) {
+
     global $conn;
     $sql = "DELETE FROM Cursus WHERE id_h=?";
     $stmt = $conn->prepare($sql);
@@ -116,5 +119,6 @@ function deleteCursusByIDh($idh) {
 
 
 function log_print($str){
+    //debug print function
     echo "<script> console.log('$str') </script>";
 }
