@@ -1,3 +1,6 @@
+// fontion permettant de gérer l'affichage pour faire un changment d'onglet ne necessitant pas de
+// recharger la page
+
 function change_tab(name) {
         document.getElementById('tab_'+name).className = 'tab_1 tab';
         document.getElementById('content_tab_'+name).style.display = 'block';
@@ -11,6 +14,7 @@ function change_tab(name) {
 
 
 }
+// intitialisation de la varaible que si celle ci n'est pas définie
 if (typeof(data) == 'undefined') {
     data ={
         old_tab : "home"

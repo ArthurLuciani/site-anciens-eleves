@@ -1,4 +1,5 @@
 <div id ="header" class="tabs">
+        <!-- liste des onglets -->
         <img src="images/logo2.png" id="logo" onclick = "change_tab('home');"><!--
         --><span class="tab_1 tab" id="tab_home" onclick="change_tab('home');"> Accueil </span><!--
         --><span class="tab_0 tab" id="tab_students" onclick="change_tab('students');"> Anciens élèves </span><!--

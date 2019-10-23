@@ -1,15 +1,26 @@
 <?php
+// permet d'afficher un message d'erreur lors d'un echec de connexion ou d'inscription
+//au dessus du formulaire
 session_start();
 if (isset($_SESSION['errID'])){
     $errID = htmlspecialchars($_SESSION['errID']);
     echo "<div class='warning'> $errID </div>";
 }
 
+
+// tableau contenant les différents champs pour le formulaire de connexion, de la forme:
+//   "Nom affiché => [type d'input, name et id, exemple, taille] si champs ou 
+//   "button => [type d'input, name et id] si boutton
+
 $feat_co = array(
-    
     "E_mail" => ["email", "mail","prenom.nom@ens-rennes.fr", "44"],
     "Mot de passe" => ["password", "pass","******", "36"],
-    "button" => ["submit", "Connexion","button_co"]);
+    "button" => ["submit", "Connexion"]);
+
+    
+// tableau contenant les différents champs pour le formulaire d'inscription, de la forme:
+//   "Nom affiché => [type d'input, name et id, exemple, taille] si champs ou 
+//   "button => [type d'input, name et id] si boutton
 
 $feat_sub = array(
     "Nom" => ["text", "nom","Ex : Legrand", "46"],
@@ -17,16 +28,18 @@ $feat_sub = array(
     "Mot de passe" => ["password", "pass","******", "36"],
     "E_mail" => ["email", "mail","prenom.nom@ens-rennes.fr", "44"],
     "Promo" => ["number", "promo","2016", "1980"],
-    "button" => ["submit", "Inscription","button_sub"]);
+    "button" => ["submit", "Inscription"]);
     
 ?>
 <div id ="formulaires">
+    <!-- formulaire de connexion -->
+
     <form class="wrap_form" method="post" action= "connexion.php"  >
         <?php
             foreach($feat_co as $key => $values){
                 echo "<div class ='form'>";  
                     if ($key == "button"){
-                        echo "<input type='$values[0]' name='$values[1]' id='$values[2]' />";
+                        echo "<input type='$values[0]' name='$values[1]' id='$values[1]' />";
                     } else {
                         echo "<h3> $key : ";
                         echo "<input type='$values[0]' name='$values[1]' id='$values[1]' placeholder='$values[2]' size='$values[3]' required /> <br />";
@@ -36,12 +49,13 @@ $feat_sub = array(
             }
         ?>
     </form>	
+    <!-- formulaire d'inscription' -->
     <form class="wrap_form" method="post" action= "inscription.php" >
         <?php
             foreach ($feat_sub as $key => $values){
                 echo "<div class ='form'>";  
                     if ($key == "button"){
-                        echo "<input type='$values[0]' name='$values[1]' id='$values[2]' />";
+                        echo "<input type='$values[0]' name='$values[1]' id='$values[1]' />";
                     } else if ($key == "Promo")  {
                         echo "<h3> $key : ";
                         echo "<input type='$values[0]' name='$values[1]' id='$values[1]' placeholder='$values[2]' min='$values[3]' required /> <br />";
@@ -70,7 +84,7 @@ $feat_sub = array(
             </h3>
         </div> 
         <div class = form>
-            <input type="submit" value="Connexion" id = "button_co" />
+            <input type="submit" value="Connexion" id = "Connexion" />
         </div>
     </form>	
     <form class="wrap_form" method="post" action= "inscription.php" >
@@ -100,7 +114,7 @@ $feat_sub = array(
             </h3>
         </div>  
         <div class = form>
-            <input type="submit" value="Inscription" id = "button_sub" />
+            <input type="submit" value="Inscription" id = "Inscription" />
         </div>
     </form>
 </div>-->
