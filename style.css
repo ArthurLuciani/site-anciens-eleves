@@ -3,7 +3,7 @@ body{
     background-color: ghostwhite;
     min-height: 100%;
     margin: 0;
-    padding: 0;
+    padding: 5px;
     padding-bottom: 200px;
     box-sizing: border-box;
 }

@@ -43,4 +43,4 @@ if ( isset($_POST['ameliorer']))
         fputs($fichier, $message.PHP_EOL);
     } 
 }
-    ?>
+?>
