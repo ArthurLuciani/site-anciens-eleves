@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Parcours des anciens</title>
-   <link rel="icon" href="images/logo.png">
+    <link rel="icon" href="images/logo.png">
     <meta name="generator" content="Geany 1.32" />
     <link rel="stylesheet" href="style.css">
     <script src="functions.js"></script>
@@ -49,12 +49,12 @@
     </div>
 </div>
 <?php
+// permet d'accéder à n'importe quel onglet à partir de l'url
     if(isset($_GET['tab'])){
         $tab = htmlspecialchars($_GET['tab']);
         if (in_array($tab,['students', 'contact','home','connexion'])) {
           ?>
             <script>
-                console.log('hello')
                 change_tab(<?php echo "'".$tab."'"; ?>);
             </script>
         <?php  
